@@ -1,22 +1,17 @@
-# Super Rentals
+# Javascript/Emberjs Engineer Candidate Interview Project
+This Emberjs app is a basic app that allows a listing of rentals. It uses Mirage to provide a mock api to provide the data layer for it
 
-This is the project from 2.14 emberjs tutorials
-
-https://emberjs-tutorial-1499627324340.firebaseapp.com
-
-## Prerequisites
-
-You will need the following things properly installed on your computer.
-
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM)
-* [Ember CLI](https://ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
+## You need to accomplish the following tasks
+* Add a user model/mock api
+* Add in authentication for users which authenicates against a mirage mock api
+* Create an authenicated route for a user to be able to add rentals into ember data. New listings should show up on the rentals page
+* An authenicated user should be able to see this authenicated new rental link from the top navigation
+* Unauthenicated users should not be able to see the new rental link from the navigation
+* Add in the approciate unit, integration, acceptance tests
 
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd super-rentals`
 * `npm install`
 
 ## Running / Development
@@ -29,15 +24,6 @@ You will need the following things properly installed on your computer.
 * `ember test`
 * `ember test --server`
 
-### Building
+## Submitting your project
 
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-This app is deployed to firebase
-
-* `yarn global add firebase-tools`
-* `firebase login`
-* `firebase deploy`
+Check project into github and make sure you are properly commiting code when reasonable as a real project.
