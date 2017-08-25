@@ -6,7 +6,9 @@ This Emberjs app is a basic app that allows a listing of rentals. It uses Mirage
 * Add in authentication for users which authenicates against a mirage mock api
 * Create an authenicated route for a user to be able to add rentals into ember data. New listings should show up on the rentals page
 * An authenicated user should be able to see this authenicated new rental link from the top navigation
+* Authenication should be handled as a service object
 * Unauthenicated users should not be able to see the new rental link from the navigation
+* Unauthenicated users who try to go to an authenicated route should see an access denied page
 * Add in the approciate unit, integration, acceptance tests
 
 ## Installation
