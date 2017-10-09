@@ -1,11 +1,9 @@
 import PageObject, {
-    is,
     fillable,
     value,
     clickable,
     text,
-    isVisible,
-    hasClass
+    isVisible
 } from 'ember-cli-page-object';
 
 export const model = {

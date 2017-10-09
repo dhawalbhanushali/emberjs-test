@@ -3,7 +3,6 @@ import hbs from 'htmlbars-inline-precompile';
 import component from 'emberjs-test/tests/pages/login-form';
 import { promiseResolve } from 'emberjs-test/tests/helpers/stubs';
 import Service from 'ember-service';
-import RSVP from 'rsvp';
 
 const VALID_LOGIN = 'dhawal';
 const VALID_PASSWORD = 'kalpavruksh';

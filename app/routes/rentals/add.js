@@ -3,7 +3,6 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 const {
     Route,
-    inject,
     get
 } = Ember;
 

@@ -2,14 +2,13 @@ import Ember from 'ember';
 
 const {
     Service,
-    set,
     get,
     inject
 } = Ember;
 
 export default Service.extend({
 
-    session: inject.service('session'),
+    session: inject.service(),
 
     login(username, password) {
         return get(this, 'session').authenticate('authenticator:oauth2', username, password).then(() => {
