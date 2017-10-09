@@ -1,55 +1,45 @@
+import Mirage from 'ember-cli-mirage';
+
 export default function() {
-  this.namespace = '/api';
+    this.namespace = '';
 
-  let rentals = [{
-    type: 'rentals',
-      id: 'grand-old-mansion',
-      attributes: {
-        title: 'Grand Old Mansion',
-        owner: 'Veruca Salt',
-        city: 'San Francisco',
-        "property-type": 'Estate',
-        bedrooms: 15,
-        image: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg'
-      }
-    }, {
-      type: 'rentals',
-      id: 'urban-living',
-      attributes: {
-        title: 'Urban Living',
-        owner: 'Mike Teavee',
-        city: 'Seattle',
-        "property-type": 'Condo',
-        bedrooms: 1,
-        image: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Alfonso_13_Highrise_Tegucigalpa.jpg'
-      }
-    }, {
-      type: 'rentals',
-      id: 'downtown-charm',
-      attributes: {
-        title: 'Downtown Charm',
-        owner: 'Violet Beauregarde',
-        city: 'Portland',
-        "property-type": 'Apartment',
-        bedrooms: 3,
-        image: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Wheeldon_Apartment_Building_-_Portland_Oregon.jpg'
-      }
+    //collection of data
+    this.get('/api/rentals', function(db, request) {
+        let rentals = db.rentals.all();
+        if (request.queryParams && typeof request.queryParams.city !== 'undefined') {
+            rentals.models = rentals.models.filter(function(attrs) {
+                return attrs.city.toLowerCase().indexOf(request.queryParams.city.toLowerCase()) !== -1;
+            });
+        }
+        return {
+            data: rentals.models.map(attrs => (
+                { type: 'rentals', id: attrs.id, attributes: attrs }
+            ))
+        };
+    });
 
-  }]
+    // Find and return the provided rental from our rental list above
+    this.get('/api/rentals/:id');
 
-  this.get('/rentals', function(db, request) {
-    if (request.queryParams.city !== undefined) {
-      let filteredRentals = rentals.filter(function(i) {
-        return i.attributes.city.toLowerCase().indexOf(request.queryParams.city.toLowerCase()) !== -1;
-      });
-      return { data: filteredRentals };
-    } else {
-      return { data: rentals };
+    // Route for adding new rentals or any post operations
+    this.post('/api/rentals');
+
+    function formEncodedToJson(encoded) {
+        var result = {};
+        encoded.split("&").forEach(function(part) {
+            var item = part.split("=");
+            result[item[0]] = decodeURIComponent(item[1]);
+        });
+        return result;
     }
-  });
 
-  // Find and return the provided rental from our rental list above
-  this.get('/rentals/:id', function(db, request) {
-    return { data: rentals.find((rental) => request.params.id === rental.id) };
-  });
+    this.post('/token', function(db, request){
+        var params = formEncodedToJson(request.requestBody);
+        if(params.username === "dhawal" && params.password === "kalpavruksh") {
+            return { "access_token":"12dhawalkalpavruksh12" };
+        } else {
+            var body = { responseText: 'Email or password is invalid' };
+            return new Mirage.Response(401, {}, body);
+        }
+    });
 }

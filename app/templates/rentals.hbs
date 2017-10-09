@@ -5,6 +5,13 @@
   {{#link-to 'about' class="button"}}
     About Us
   {{/link-to}}
+  {{#if session.isAuthenticated}}
+    <button class="button" {{action "logout"}}>Logout</button>
+  {{else}}
+      {{#link-to 'login' class="button"}}
+        Login
+      {{/link-to}}
+  {{/if}}
 </div>
 
 {{outlet}}

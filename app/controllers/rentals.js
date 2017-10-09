@@ -1,13 +1,28 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-  actions: {
-    filterByCity(param) {
-      if (param !== '') {
-        return this.get('store').query('rental', { city: param });
-      } else {
-        return this.get('store').findAll('rental');
-      }
+const {
+    Controller,
+    inject,
+    get,
+    computed
+} = Ember;
+
+export default Controller.extend({
+    userSession: inject.service('authentication'),
+
+    session: inject.service(),
+
+    actions: {
+        filterByCity(param) {
+            if (param !== '') {
+                return this.get('store').query('rental', { city: param });
+            } else {
+                return this.get('store').findAll('rental');
+            }
+        },
+
+        logout() {
+            get(this, 'userSession').logout();
+        }
     }
-  }
 });
