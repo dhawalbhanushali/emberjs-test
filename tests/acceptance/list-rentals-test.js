@@ -1,5 +1,5 @@
 import { test } from 'qunit';
-import moduleForAcceptance from 'super-rentals/tests/helpers/module-for-acceptance';
+import moduleForAcceptance from 'emberjs-test/tests/helpers/module-for-acceptance';
 import Ember from 'ember';
 
 let StubMapsService = Ember.Service.extend({
