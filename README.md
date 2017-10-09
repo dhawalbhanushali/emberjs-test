@@ -11,6 +11,12 @@ This Emberjs app is a basic app that allows a listing of rentals. It uses Mirage
 * Unauthenicated users who try to go to an authenicated route should see an access denied page
 * Add in the approciate unit, integration, acceptance tests
 
+## To-Do list
+* Transition to Rentals page on login
+* Remove newly added rental when logged off
+* Add test cases for all newly created ember modules
+* Form validation for Login and Add Rental page
+
 ## Installation
 
 * `git clone <repository-url>` this repository
