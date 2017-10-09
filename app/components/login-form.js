@@ -8,7 +8,10 @@ const {
 } = Ember;
 
 export default Component.extend({
+    classNames: ['login-form'],
     userSession: inject.service('authentication'),
+
+    errorMessage: null,
 
     actions: {
         login() {
@@ -16,6 +19,8 @@ export default Component.extend({
             get(this, 'userSession').login(username, password).then((response) => {
                 if (!response.isAuthenticated) {
                     set(this, 'errorMessage', response.message);
+                } else {
+                    set(this, 'errorMessage', null);
                 }
             });
         }

@@ -1,11 +1,10 @@
 <form {{action 'login' on='submit'}}>
     <label for="username">Username</label>
-    {{input id='username' placeholder='Enter Username' value=username}}
+    {{input id='username'name="username" placeholder='Enter Username' value=username}}
     <label for="password">Password</label>
-    {{input id='password' placeholder='Enter Password' type='password' value=password}}
-    <button type="submit">Login</button>
+    {{input id='password' name="password" placeholder='Enter Password' type='password' value=password}}
+    <button type="submit" class="button">Login</button>
     {{#if errorMessage}}
-        <p>{{errorMessage}}</p>
+        <p class="errorMessage">{{errorMessage}}</p>
     {{/if}}
 </form>
-{{yield}}
