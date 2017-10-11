@@ -25,20 +25,22 @@ export default function() {
     this.post('/api/rentals');
 
     function formEncodedToJson(encoded) {
-        var result = {};
+        let result = {};
         encoded.split("&").forEach(function(part) {
-            var item = part.split("=");
+            let item = part.split("=");
             result[item[0]] = decodeURIComponent(item[1]);
         });
         return result;
     }
 
     this.post('/token', function(db, request){
-        var params = formEncodedToJson(request.requestBody);
+        let params = formEncodedToJson(request.requestBody);
+        let body;
         if(params.username === "dhawal" && params.password === "kalpavruksh") {
-            return { "access_token":"12dhawalkalpavruksh12" };
+            body = { access_token: "12dhawalkalpavruksh12" }; //This data can be used for storage based authentication
+            return new Mirage.Response(200, {}, body);
         } else {
-            var body = { responseText: 'Email or password is invalid' };
+            body = { responseText: 'Email or password is invalid' };
             return new Mirage.Response(401, {}, body);
         }
     });

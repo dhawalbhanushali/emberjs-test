@@ -6,5 +6,5 @@ const {
 } = Ember;
 
 export default Controller.extend({
-    session: inject.service()
+    userSession: inject.service('authentication')
 })

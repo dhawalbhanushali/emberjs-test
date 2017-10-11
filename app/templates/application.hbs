@@ -12,7 +12,7 @@
       {{#link-to 'contact'}}
         Contact
       {{/link-to}}
-      {{#if session.isAuthenticated}}
+      {{#if userSession.isAuthenticated}}
           {{#link-to 'rentals.add'}}
             Add Rental
           {{/link-to}}

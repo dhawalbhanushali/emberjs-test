@@ -1,29 +1,31 @@
 import Ember from 'ember';
 
 const {
-    Service,
-    get,
-    inject
+    Service
 } = Ember;
 
 export default Service.extend({
-
-    session: inject.service(),
+    isAuthenticated: false,
 
     login(username, password) {
-        return get(this, 'session').authenticate('authenticator:oauth2', username, password).then(() => {
+        return Ember.$.ajax({
+            method: "POST",
+            url: "/token",
+            data: { username: username, password: password }
+        }).then(() => {
+            this.set('isAuthenticated', true);
             return {
                 isAuthenticated: true
             }
-        }, (err) => {
+        }).catch((err) => {
             return {
                 isAuthenticated: false,
-                message: err.responseText
+                message: err.responseJSON.responseText
             }
         });
     },
 
     logout() {
-        get(this, 'session').invalidate();
+        this.set('isAuthenticated', false);
     }
 });

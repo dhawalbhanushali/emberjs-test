@@ -9,8 +9,6 @@ const {
 export default Controller.extend({
     userSession: inject.service('authentication'),
 
-    session: inject.service(),
-
     actions: {
         filterByCity(param) {
             if (param !== '') {
@@ -22,6 +20,7 @@ export default Controller.extend({
 
         logout() {
             get(this, 'userSession').logout();
+            this.transitionToRoute('rentals');
         }
     }
 });
