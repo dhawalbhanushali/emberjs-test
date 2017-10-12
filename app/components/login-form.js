@@ -10,7 +10,6 @@ const {
 export default Component.extend({
     classNames: ['login-form'],
     userSession: inject.service('authentication'),
-    // router: inject.service(),
 
     errorMessage: null,
 
@@ -22,7 +21,7 @@ export default Component.extend({
                     set(this, 'errorMessage', response.message);
                 } else {
                     set(this, 'errorMessage', null);
-                    // get(this, 'router').transitionTo('rentals');
+                    get(this, 'redirect')();
                 }
             });
         }

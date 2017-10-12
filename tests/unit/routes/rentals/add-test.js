@@ -5,8 +5,8 @@ moduleFor('route:rentals/add', 'Unit | Route | rentals/add', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
   beforeEach () {
-      this.register('service:session', Service.extend());
-      this.inject.service('session');
+      this.register('service:authentication', Service.extend());
+      this.inject.service('authentication');
   }
 });
 

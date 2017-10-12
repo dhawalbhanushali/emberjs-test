@@ -1,6 +1,7 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'emberjs-test/tests/helpers/module-for-acceptance';
 import Ember from 'ember';
+import defaultScenario from '../../mirage/scenarios/default';
 
 let StubMapsService = Ember.Service.extend({
   getMapElement() {
@@ -39,13 +40,15 @@ test('should link to contact information', function (assert) {
 });
 
 test('should list available rentals', function (assert) {
+  defaultScenario(server);
   visit('/');
   andThen(function () {
-    assert.equal(find('.listing').length, 3, 'should see 3 listings');
+    assert.equal(find('.listing').length, 5, 'should see 5 listings');
   });
 });
 
 test('should filter the list of rentals by city', function (assert) {
+  defaultScenario(server);
   visit('/');
   fillIn('.list-filter input', 'Seattle');
   keyEvent('.list-filter input', 'keyup', 69);
@@ -56,11 +59,12 @@ test('should filter the list of rentals by city', function (assert) {
 });
 
 test('should show details for a selected rental', function (assert) {
+  defaultScenario(server);
   visit('/');
-  click('a:contains("Grand Old Mansion")');
+  click('a[href="/rentals/1"]');
   andThen(function() {
-    assert.equal(currentURL(), '/rentals/grand-old-mansion', 'should navigate to show route');
-    assert.equal(find('.show-listing h2').text(), "Grand Old Mansion", 'should list rental title');
+    assert.equal(currentURL(), '/rentals/1', 'should navigate to show route');
+    assert.equal(!!find('.show-listing h2').text().length, true, 'should list rental title');
     assert.equal(find('.description').length, 1, 'should list a description of the property');
   })
 });

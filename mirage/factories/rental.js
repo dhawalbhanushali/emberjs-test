@@ -1,4 +1,5 @@
 import { Factory, faker } from 'ember-cli-mirage';
+const cities = ['San Francisco', 'Seattle', 'Portland'];
 
 export default Factory.extend({
     title() {
@@ -7,9 +8,7 @@ export default Factory.extend({
     owner() {
         return `${faker.name.firstName()}  ${faker.name.lastName()}`;
     },
-    city() {
-        return faker.address.city();
-    },
+    city(i) { return cities[i] ? `${cities[i]}` : faker.address.city(); },
     'property-type'() {
         return faker.random.arrayElement(['Condo', 'Apartment', 'Suite']);
     },

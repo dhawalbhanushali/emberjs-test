@@ -2,12 +2,21 @@ import Ember from 'ember';
 
 const {
     Route,
-    get
+    get,
+    inject
 } = Ember;
 
 export default Route.extend({
+    userSession: inject.service('authentication'),
+
     model() {
         return get(this, 'store').createRecord('rental');
+    },
+
+    beforeModel() {
+        if(!get(this, 'userSession').isAuthenticated) {
+            this.transitionTo('/');
+        }
     },
 
     actions: {
@@ -19,4 +28,4 @@ export default Route.extend({
             }
         }
     }
-})
+});

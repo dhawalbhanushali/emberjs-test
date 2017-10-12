@@ -1,5 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import component from 'emberjs-test/tests/pages/rental-form';
 
 moduleForComponent('rental-form', 'Integration | Component | rental form', {
   integration: true
@@ -12,14 +13,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{rental-form}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#rental-form}}
-      template block text
-    {{/rental-form}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('.fieldsWrapper').length, 1);
 });

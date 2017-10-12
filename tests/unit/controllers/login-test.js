@@ -1,13 +1,8 @@
 import { moduleFor, test } from 'ember-qunit';
-import Service from 'ember-service';
 
-moduleFor('controller:rentals', 'Unit | Controller | rentals', {
+moduleFor('controller:login', 'Unit | Controller | login', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
-  beforeEach () {
-      this.register('service:authentication', Service.extend());
-      this.inject.service('authentication');
-  }
 });
 
 // Replace this with your real tests.
