@@ -1,6 +1,5 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import component from 'emberjs-test/tests/pages/rental-form';
 
 moduleForComponent('rental-form', 'Integration | Component | rental form', {
   integration: true
