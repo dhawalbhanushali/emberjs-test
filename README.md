@@ -12,10 +12,12 @@ This Emberjs app is a basic app that allows a listing of rentals. It uses Mirage
 * Add in the approciate unit, integration, acceptance tests
 
 ## To-Do list
-* Transition to Rentals page on login
 * Remove newly added rental when logged off
-* Add test cases for all newly created ember modules
 * Form validation for Login and Add Rental page
+
+## Login Credentials
+* Username - dhawal
+* Password - kalpavruksh
 
 ## Installation
 
